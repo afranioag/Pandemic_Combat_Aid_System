@@ -1,10 +1,10 @@
-package com.phoebus.Pandemic_Combat_Aid_System.models.hospitalDTO;
+package com.phoebus.api.models.hospitalDTO;
 
 import java.util.List;
 
-import com.phoebus.Pandemic_Combat_Aid_System.models.Hospital;
-import com.phoebus.Pandemic_Combat_Aid_System.models.Medico;
-import com.phoebus.Pandemic_Combat_Aid_System.models.Recurso;
+import com.phoebus.api.models.Hospital;
+import com.phoebus.api.models.Medico;
+import com.phoebus.api.models.Recurso;
 
 public class HospitalCriacaoDTO {
 	private String nome;

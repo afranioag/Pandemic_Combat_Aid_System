@@ -1,4 +1,4 @@
-package com.phoebus.Pandemic_Combat_Aid_System.service;
+package com.phoebus.api.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,11 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.phoebus.Pandemic_Combat_Aid_System.models.Hospital;
-import com.phoebus.Pandemic_Combat_Aid_System.models.Recurso;
-import com.phoebus.Pandemic_Combat_Aid_System.models.hospitalDTO.HospitalAtualizaDTO;
-import com.phoebus.Pandemic_Combat_Aid_System.models.hospitalDTO.HospitalCriacaoDTO;
-import com.phoebus.Pandemic_Combat_Aid_System.repository.HospitalRepository;
+import com.phoebus.api.models.Hospital;
+import com.phoebus.api.models.Recurso;
+import com.phoebus.api.models.hospitalDTO.HospitalAtualizaDTO;
+import com.phoebus.api.models.hospitalDTO.HospitalCriacaoDTO;
+import com.phoebus.api.repository.HospitalRepository;
 
 @Service
 public class HospitalServiceImpl implements HospitalService {

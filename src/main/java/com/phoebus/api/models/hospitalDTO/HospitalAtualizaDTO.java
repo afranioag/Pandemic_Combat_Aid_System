@@ -1,6 +1,6 @@
-package com.phoebus.Pandemic_Combat_Aid_System.models.hospitalDTO;
+package com.phoebus.api.models.hospitalDTO;
 
-import com.phoebus.Pandemic_Combat_Aid_System.models.Hospital;
+import com.phoebus.api.models.Hospital;
 
 public class HospitalAtualizaDTO {
 

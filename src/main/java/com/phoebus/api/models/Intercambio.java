@@ -1,10 +1,12 @@
-package com.phoebus.Pandemic_Combat_Aid_System.models;
+package com.phoebus.api.models;
+
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.criteria.CriteriaBuilder.In;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Intercambio {
@@ -22,10 +24,9 @@ public class Intercambio {
 	private int ambulancia;
 
 	private int respirador;
-	
+
+	@OneToOne
 	private Hospital hospital;
-	
-	private int pontos;
 
 	public Intercambio(int medico, int enfermeiro, int tomografo, int ambulancia, int respirador, Hospital hospital) {
 		this.ambulancia = ambulancia;
@@ -91,15 +92,18 @@ public class Intercambio {
 	public void setHospital(Hospital hospital) {
 		this.hospital = hospital;
 	}
-	
-	
 
 	public int getPontos() {
-		return pontos;
-	}
+		List<Recurso> recursos = hospital.getRecursos();
 
-	public void setPontos(int pontos) {
+		int pontos = 0;
+		pontos += recursos.get(0).getPontos() * this.medico;
+		pontos += recursos.get(1).getPontos() * this.enfermeiro;
+		pontos += recursos.get(2).getPontos() * this.tomografo;
+		pontos += recursos.get(3).getPontos() * this.respirador;
+		pontos += recursos.get(4).getPontos() * this.ambulancia;
 		
+		return pontos;
 	}
 
 	@Override
@@ -124,5 +128,4 @@ public class Intercambio {
 		return true;
 	}
 
-	
 }

@@ -1,15 +1,15 @@
-package com.phoebus.Pandemic_Combat_Aid_System.models;
+package com.phoebus.api.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Hospital {
@@ -17,24 +17,25 @@ public class Hospital {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	private String nome;
-	
+
 	private String cnpj;
-	
+
 	private String endereco;
-	
+
 	private String localizacao;
 
 	private Double ocupacao;
-	
+
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Recurso> recursos = new ArrayList<>();
-	
+
+	@OneToOne
 	private Intercambio intercambio;
-	
+
 	public Hospital() {
-		
+
 	}
 
 	public Hospital(String nome, String cnpj, String endereco, String localizacao, Double ocupacao) {
@@ -44,7 +45,7 @@ public class Hospital {
 		this.localizacao = localizacao;
 		this.ocupacao = ocupacao;
 	}
-	
+
 	public Hospital(String nome, String cnpj, String endereco, String localizacao, Double ocupacao, List recursos) {
 		this.nome = nome;
 		this.cnpj = cnpj;
@@ -89,7 +90,7 @@ public class Hospital {
 	public long getId() {
 		return id;
 	}
-	
+
 	public Double getOcupacao() {
 		return ocupacao;
 	}
@@ -109,7 +110,15 @@ public class Hospital {
 	public void setRecurso(Recurso recurso) {
 		this.recursos.add(recurso);
 	}
-	
+
+	public Intercambio getIntercambio() {
+		return intercambio;
+	}
+
+	public void setIntercambio(Intercambio intercambio) {
+		this.intercambio = intercambio;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -136,7 +145,5 @@ public class Hospital {
 	public String toString() {
 		return "Hospital [nome=" + nome + ", cnpj=" + cnpj + ", endereco=" + endereco + "]";
 	}
-	
-	
-	
+
 }

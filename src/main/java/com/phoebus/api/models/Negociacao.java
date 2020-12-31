@@ -1,9 +1,10 @@
-package com.phoebus.Pandemic_Combat_Aid_System.models;
+package com.phoebus.api.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Negociacao {
@@ -11,9 +12,11 @@ public class Negociacao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
+	
+	@OneToOne
 	private Intercambio intercambio1;
 
+	@OneToOne
 	private Intercambio intercambio2;
 
 	public Negociacao(Intercambio intercambio1, Intercambio intercambio2) {

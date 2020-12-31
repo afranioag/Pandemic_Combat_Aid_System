@@ -1,22 +1,22 @@
-package com.phoebus.Pandemic_Combat_Aid_System.models;
+package com.phoebus.api.models;
 
 import javax.persistence.Entity;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @Entity
-@JsonTypeName("Respirador")
-public class Respirador extends Recurso {
+@JsonTypeName("Enfermeiro")
+public class Enfermeiro extends Recurso {
 
 	private int pontos;
 
-	public Respirador() {
+	public Enfermeiro() {
 
 	}
 
-	public Respirador(int quantidade) {
+	public Enfermeiro(int quantidade) {
 		super(quantidade);
-		this.pontos = 5;
+		this.pontos = 3;
 	}
 
 	@Override
@@ -24,6 +24,7 @@ public class Respirador extends Recurso {
 		return this.pontos * super.getQuantidade();
 	}
 
+	@Override
 	public int getPontos() {
 		return pontos;
 	}

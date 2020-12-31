@@ -1,4 +1,4 @@
-package com.phoebus.Pandemic_Combat_Aid_System.models;
+package com.phoebus.api.models;
 
 import java.io.Serializable;
 
@@ -45,8 +45,18 @@ public abstract class Recurso implements Serializable{
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
+	
+	public void adicionaRecurso(int quantidade) {
+		this.quantidade += quantidade;
+	}
+	
+	public void subtraiRecurso(int quantidade) {
+		this.quantidade -= quantidade;
+	}
 
 	public abstract int getPontuacao();
+	
+	public abstract int getPontos();
 
 	public Long getId() {
 		return id;

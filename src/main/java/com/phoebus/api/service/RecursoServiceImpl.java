@@ -1,4 +1,4 @@
-package com.phoebus.Pandemic_Combat_Aid_System.service;
+package com.phoebus.api.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,14 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.phoebus.Pandemic_Combat_Aid_System.models.Ambulancia;
-import com.phoebus.Pandemic_Combat_Aid_System.models.Enfermeiro;
-import com.phoebus.Pandemic_Combat_Aid_System.models.Medico;
-import com.phoebus.Pandemic_Combat_Aid_System.models.Recurso;
-import com.phoebus.Pandemic_Combat_Aid_System.models.Respirador;
-import com.phoebus.Pandemic_Combat_Aid_System.models.Tomografo;
-import com.phoebus.Pandemic_Combat_Aid_System.models.hospitalDTO.HospitalCriacaoDTO;
-import com.phoebus.Pandemic_Combat_Aid_System.repository.RecursoRepository;
+import com.phoebus.api.models.Ambulancia;
+import com.phoebus.api.models.Enfermeiro;
+import com.phoebus.api.models.Medico;
+import com.phoebus.api.models.Recurso;
+import com.phoebus.api.models.Respirador;
+import com.phoebus.api.models.Tomografo;
+import com.phoebus.api.models.hospitalDTO.HospitalCriacaoDTO;
+import com.phoebus.api.repository.RecursoRepository;
 
 @Service
 public class RecursoServiceImpl implements RecursoService{

@@ -1,4 +1,4 @@
-package com.phoebus.Pandemic_Combat_Aid_System.controller;
+package com.phoebus.api.controller;
 
 import java.net.URI;
 import java.util.List;
@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.phoebus.Pandemic_Combat_Aid_System.models.Hospital;
-import com.phoebus.Pandemic_Combat_Aid_System.models.Recurso;
-import com.phoebus.Pandemic_Combat_Aid_System.models.hospitalDTO.HospitalAtualizaDTO;
-import com.phoebus.Pandemic_Combat_Aid_System.models.hospitalDTO.HospitalCriacaoDTO;
-import com.phoebus.Pandemic_Combat_Aid_System.service.HospitalService;
-import com.phoebus.Pandemic_Combat_Aid_System.service.RecursoService;
+import com.phoebus.api.models.Hospital;
+import com.phoebus.api.models.Recurso;
+import com.phoebus.api.models.hospitalDTO.HospitalAtualizaDTO;
+import com.phoebus.api.models.hospitalDTO.HospitalCriacaoDTO;
+import com.phoebus.api.service.HospitalService;
+import com.phoebus.api.service.RecursoService;
 
 @RestController
 @CrossOrigin

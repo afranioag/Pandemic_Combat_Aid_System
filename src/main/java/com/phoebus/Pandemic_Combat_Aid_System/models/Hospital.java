@@ -1,9 +1,15 @@
 package com.phoebus.Pandemic_Combat_Aid_System.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Hospital {
@@ -22,6 +28,11 @@ public class Hospital {
 
 	private Double ocupacao;
 	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Recurso> recursos = new ArrayList<>();
+	
+	private Intercambio intercambio;
+	
 	public Hospital() {
 		
 	}
@@ -32,6 +43,15 @@ public class Hospital {
 		this.endereco = endereco;
 		this.localizacao = localizacao;
 		this.ocupacao = ocupacao;
+	}
+	
+	public Hospital(String nome, String cnpj, String endereco, String localizacao, Double ocupacao, List recursos) {
+		this.nome = nome;
+		this.cnpj = cnpj;
+		this.endereco = endereco;
+		this.localizacao = localizacao;
+		this.ocupacao = ocupacao;
+		this.recursos = recursos;
 	}
 
 	public String getNome() {
@@ -78,6 +98,18 @@ public class Hospital {
 		this.ocupacao = ocupacao;
 	}
 
+	public List<Recurso> getRecursos() {
+		return recursos;
+	}
+
+	public void setRecursos(List<Recurso> recursos) {
+		this.recursos = recursos;
+	}
+
+	public void setRecurso(Recurso recurso) {
+		this.recursos.add(recurso);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

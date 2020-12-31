@@ -22,6 +22,9 @@ public class IntercambioServiceImpl implements IntercambioService {
 
 	@Autowired
 	private NegociacaoRepository negociacaoRepository;
+	
+	@Autowired
+	private IntercambioRepository intercambioRepository;
 
 	@Override
 	public Intercambio criaIntercambio(IntercambioDTO intercambioDTO, long idHospital) {
@@ -32,11 +35,12 @@ public class IntercambioServiceImpl implements IntercambioService {
 			return null;
 		}
 
-		Intercambio intercambio = intercambioDTO.intercambioCriacaoDTO();
+		Intercambio intercambio = intercambioDTO.intercambioCriacaoDTO(hospitalOpt.get());
 
 		hospitalOpt.get().setIntercambio(intercambio);
+		
+		return intercambioRepository.save(intercambio);
 
-		return intercambio;
 	}
 
 	@Override

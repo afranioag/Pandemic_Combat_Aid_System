@@ -19,6 +19,7 @@ import com.phoebus.api.models.Hospital;
 import com.phoebus.api.models.Intercambio;
 import com.phoebus.api.models.Negociacao;
 import com.phoebus.api.models.hospitalDTO.IntercambioDTO;
+import com.phoebus.api.repository.IntercambioRepository;
 import com.phoebus.api.service.HospitalService;
 import com.phoebus.api.service.IntercambioService;
 
@@ -32,7 +33,7 @@ public class IntercambioController {
 
 	@Autowired
 	private IntercambioService intercambioService;
-
+	
 	@Transactional
 	@PostMapping("/intercambios/{id}")
 	public ResponseEntity<?> adicionaIntercambio(@PathVariable long id, @RequestBody IntercambioDTO intercambioDTO) {

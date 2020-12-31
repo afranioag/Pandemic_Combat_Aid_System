@@ -18,16 +18,12 @@ public class IntercambioDTO {
 
 	private int respirador;
 
-	private Hospital hospital;
-
-	public IntercambioDTO(int medico, int enfermeiro, int tomografo, int ambulancia, int respirador,
-			Hospital hospital) {
+	public IntercambioDTO(int medico, int enfermeiro, int tomografo, int ambulancia, int respirador) {
 		this.ambulancia = ambulancia;
 		this.enfermeiro = enfermeiro;
 		this.tomografo = tomografo;
 		this.respirador = respirador;
 		this.medico = medico;
-		this.hospital = hospital;
 	}
 
 	public int getMedico() {
@@ -70,16 +66,8 @@ public class IntercambioDTO {
 		this.respirador = respirador;
 	}
 
-	public Hospital getHospital() {
-		return hospital;
-	}
-
-	public void setHospital(Hospital hospital) {
-		this.hospital = hospital;
-	}
-
-	public Intercambio intercambioCriacaoDTO() {
-
+	public Intercambio intercambioCriacaoDTO(Hospital hospital) {
+		
 		// caso a quantidade de algum recurso para intercambio for menor que a
 		// quantidade existente será retornado null
 		List<Recurso> recursos = hospital.getRecursos();

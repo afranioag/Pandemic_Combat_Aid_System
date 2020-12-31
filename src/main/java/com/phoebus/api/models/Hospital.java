@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Hospital {
 
@@ -32,6 +34,7 @@ public class Hospital {
 	private List<Recurso> recursos = new ArrayList<>();
 
 	@OneToOne
+	@JsonManagedReference
 	private Intercambio intercambio;
 
 	public Hospital() {

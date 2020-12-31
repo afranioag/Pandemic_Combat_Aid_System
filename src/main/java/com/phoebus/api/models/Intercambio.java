@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Intercambio {
 
@@ -26,6 +28,7 @@ public class Intercambio {
 	private int respirador;
 
 	@OneToOne
+	@JsonBackReference
 	private Hospital hospital;
 
 	public Intercambio(int medico, int enfermeiro, int tomografo, int ambulancia, int respirador, Hospital hospital) {

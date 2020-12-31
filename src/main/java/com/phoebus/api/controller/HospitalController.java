@@ -19,10 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.phoebus.api.models.Hospital;
+import com.phoebus.api.models.Negociacao;
 import com.phoebus.api.models.Recurso;
 import com.phoebus.api.models.hospitalDTO.HospitalAtualizaDTO;
 import com.phoebus.api.models.hospitalDTO.HospitalCriacaoDTO;
+import com.phoebus.api.models.hospitalDTO.RelatorioDTO;
 import com.phoebus.api.service.HospitalService;
+import com.phoebus.api.service.IntercambioService;
 import com.phoebus.api.service.RecursoService;
 
 @RestController
@@ -35,6 +38,9 @@ public class HospitalController {
 
 	@Autowired
 	private RecursoService recursoService;
+
+	@Autowired
+	private IntercambioService IntercambioService;
 
 	@GetMapping("/hospitais")
 	public ResponseEntity<List<Hospital>> listaHospitais() {
@@ -74,7 +80,7 @@ public class HospitalController {
 
 		return ResponseEntity.created(url).body(hospital);
 	}
-	
+
 	@GetMapping("/hospitais/{id}/ocupacao")
 	public ResponseEntity<HospitalAtualizaDTO> exibeOcupacaoHospital(@PathVariable long id) {
 
@@ -86,7 +92,6 @@ public class HospitalController {
 
 		return ResponseEntity.ok(new HospitalAtualizaDTO(hospital));
 	}
-
 
 	@Transactional
 	@PutMapping("/hospitais/{id}")
@@ -113,6 +118,51 @@ public class HospitalController {
 
 		return ResponseEntity.ok(hospital);
 	}
-	
+
+	@GetMapping("/hospitais/relatorios")
+	public ResponseEntity<?> exibeRelatorio() {
+		List<Hospital> hospitais = hospitalService.listaHospitais();
+
+		int maior = 0;
+		int menor = 0;
+
+		for (Hospital hospital : hospitais) {
+			if (hospital.getOcupacao() >= 90) {
+				maior += 1;
+			} else {
+				menor += 1;
+			}
+		}
+
+		double porcentagemMaior = (maior * 100) / hospitais.size();
+		double porcentamMenor = (menor * 100) / hospitais.size();
+
+		int medico = 0;
+		int enfermeiro = 0;
+		int tomografo = 0;
+		int respirador = 0;
+		int ambulancia = 0;
+
+		for (Hospital hospital : hospitais) {
+			medico += hospital.getRecursos().get(0).getQuantidade();
+			enfermeiro += hospital.getRecursos().get(1).getQuantidade();
+			tomografo += hospital.getRecursos().get(2).getQuantidade();
+			respirador += hospital.getRecursos().get(3).getQuantidade();
+			ambulancia += hospital.getRecursos().get(4).getQuantidade();
+		}
+
+		double mediaMedico = medico / hospitais.size();
+		double mediaEnfermeiro = enfermeiro / hospitais.size();
+		double mediaTomografo = tomografo / hospitais.size();
+		double mediaRespirador = respirador / hospitais.size();
+		double mediaAmbulancia = ambulancia / hospitais.size();
+
+		List<Negociacao> negociacaoRelatorio = IntercambioService.recuperacaNegociacoes();
+
+		RelatorioDTO relatorioDTO = new RelatorioDTO(porcentagemMaior, porcentamMenor, mediaMedico, mediaEnfermeiro,
+				mediaTomografo, mediaRespirador, mediaAmbulancia, negociacaoRelatorio);
+
+		return ResponseEntity.ok(relatorioDTO);
+	}
 
 }

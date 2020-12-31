@@ -8,17 +8,29 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("Medico")
 public class Medico extends Recurso{
 	
+	private int pontos;
+	
 	public Medico() {
 		
 	}
 	
 	public Medico(int quantidade) {
 		super(quantidade);
+		this.pontos = 3;
 	}
 	
 	@Override
-	public int getPontos() {
-		return 3 * super.getQuantidade();
+	public int getPontuacao() {
+		return this.pontos * super.getQuantidade();
 	}
 
+	public int getPontos() {
+		return pontos;
+	}
+
+	public void setPontos(int pontos) {
+		this.pontos = pontos;
+	}
+
+	
 }

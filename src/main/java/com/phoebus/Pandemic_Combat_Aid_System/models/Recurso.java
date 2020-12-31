@@ -46,13 +46,10 @@ public abstract class Recurso implements Serializable{
 		this.quantidade = quantidade;
 	}
 
-	public abstract int getPontos();
+	public abstract int getPontuacao();
 
 	public Long getId() {
 		return id;
 	}
-	
-	
-	
 	
 }

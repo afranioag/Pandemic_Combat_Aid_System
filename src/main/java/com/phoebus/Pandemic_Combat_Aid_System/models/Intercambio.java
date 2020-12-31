@@ -22,13 +22,18 @@ public class Intercambio {
 	private int ambulancia;
 
 	private int respirador;
+	
+	private Hospital hospital;
+	
+	private int pontos;
 
-	public Intercambio(int medico, int enfermeiro, int tomografo, int ambulancia, int respirador) {
+	public Intercambio(int medico, int enfermeiro, int tomografo, int ambulancia, int respirador, Hospital hospital) {
 		this.ambulancia = ambulancia;
 		this.enfermeiro = enfermeiro;
 		this.tomografo = tomografo;
 		this.respirador = respirador;
 		this.medico = medico;
+		this.hospital = hospital;
 	}
 
 	public Intercambio() {
@@ -79,4 +84,45 @@ public class Intercambio {
 		return id;
 	}
 
+	public Hospital getHospital() {
+		return hospital;
+	}
+
+	public void setHospital(Hospital hospital) {
+		this.hospital = hospital;
+	}
+	
+	
+
+	public int getPontos() {
+		return pontos;
+	}
+
+	public void setPontos(int pontos) {
+		
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Intercambio other = (Intercambio) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+
+	
 }
